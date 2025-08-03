@@ -1,4 +1,4 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -59,6 +59,34 @@
       padding: 15px 30px;
       color: #ccc;
       text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #2a2f3e;
+      color: white;
+    }
+
+    .sidebar a.active {
+      background-color: #2a348d;
+      color: white;
+    }
+
+    .logout-btn {
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      width: 100%;
+      text-align: left;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+
+    .logout-btn:hover {
+      background-color: #b71c1c;
     }
 
     .main {
@@ -155,6 +183,25 @@
     .section {
       margin-bottom: 40px;
     }
+
+    .welcome-message {
+      background-color: #e3f2fd;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 4px solid #2196f3;
+    }
+
+    .welcome-message h4 {
+      color: #1976d2;
+      margin-bottom: 5px;
+    }
+
+    .welcome-message p {
+      color: #424242;
+      margin: 0;
+    }
+
   </style>
 </head>
 <body>
@@ -165,18 +212,24 @@
         <img src="https://student.uniglobecollege.edu.np/Content/img/Uniglobelogo.png" alt="Logo">
       </a>
     </div>
-    <a href="dashboard_mis.html">Profile</a>
+    <a href="dashboard_mis.html" class="active">Profile</a>
     <a href="test_calender.html">Attendance</a>
     <a href="atendance_example.html">Assignments</a>
     <a href="calender_mis.html">Calendar</a>
     <a href="Result_mis.html">Exam Result</a>
+    <button class="logout-btn" onclick="logout()">Logout</button>
   </div>
 
   <div class="main">
+    <div id="welcomeMessage" class="welcome-message" style="display: none;">
+      <h4>Welcome back!</h4>
+      <p id="userInfo"></p>
+    </div>
+
     <div class="profile-header">
       <img src="https://cdn-icons-png.flaticon.com/512/3704/3704101.png" alt="Student Photo">
       <div class="info-block">
-        <h2>Yuganta Ghimire</h2>
+        <h2 id="studentName">Yuganta Ghimire</h2>
         <p><strong>Symbol No:</strong> 27518112118</p>
         <p><strong>Program:</strong> Science</p>
         <p><strong>Batch:</strong> 2081/82</p>
@@ -229,15 +282,17 @@
       <div class="info-grid">
         <div class="info-item">
           <label>Father's Name</label>
-          <input type="text" value="Hari Prasad Ghimire" disabled>
+          <input type="text" value="Bijaya Kanta Ghimire" disabled>
         </div>
-        <div class="info-item">
-          <label>Father's Occupation</label>
-          <input type="text" value="Government Officer" disabled>
+        <div class="info-item" >
+          <label allign="left">Father's Occupation</label>
+          <input type="text" value="Businessman" disabled>
         </div>
+        <br>
         <div class="info-item">
+          
           <label>Mother's Name</label>
-          <input type="text" value="Sita Devi Ghimire" disabled>
+          <input type="text" value="Sita Adhikari" disabled>
         </div>
         <div class="info-item">
           <label>Mother's Occupation</label>
@@ -248,7 +303,58 @@
     </div>
 
   </div>
+
+  <script>
+    // Check if user is logged in
+    window.onload = function() {
+      const loggedInUser = sessionStorage.getItem('loggedInUser');
+      
+      if (!loggedInUser) {
+        // User is not logged in, redirect to login page
+        alert('Please login to access the dashboard');
+        window.location.href = 'login_mis.html';
+        return;
+      }
+      
+      // Parse user data
+      const user = JSON.parse(loggedInUser);
+      
+      // Display welcome message
+      const welcomeMessage = document.getElementById('welcomeMessage');
+      const userInfo = document.getElementById('userInfo');
+      const studentName = document.getElementById('studentName');
+      
+      welcomeMessage.style.display = 'block';
+      userInfo.textContent = `Welcome, ${user.name}! You logged in at ${new Date(user.loginTime).toLocaleString()}`;
+      
+      // Update student name if it matches the logged-in user
+      if (user.email === 'yugantaghimire81@uniglobecollege.edu.np') {
+        studentName.textContent = user.name;
+      }
+    };
+    
+    function logout() {
+      // Clear session storage
+      sessionStorage.removeItem('loggedInUser');
+      
+      // Redirect to login page
+      window.location.href = 'login_mis.html';
+    }
+    
+    // Add click event listeners to sidebar links
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebarLinks = document.querySelectorAll('.sidebar a');
+      
+      sidebarLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          // Remove active class from all links
+          sidebarLinks.forEach(l => l.classList.remove('active'));
+          
+          // Add active class to clicked link
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
-
-
