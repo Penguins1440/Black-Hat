@@ -122,7 +122,7 @@
     .result-table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 700px;
+      min-width: 800px;
     }
 
     .result-table th,
@@ -135,6 +135,14 @@
     .result-table thead {
       background-color: #4A90E2;
       color: white;
+    }
+
+    .result-table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .result-table tbody tr:hover {
+      background-color: #f0f0f0;
     }
 
     /* Buttons */
@@ -196,6 +204,13 @@
       background-color: #b71c1c;
     }
 
+    /* Grade Colors */
+    .grade-A { color: #28a745; font-weight: bold; }
+    .grade-B { color: #17a2b8; font-weight: bold; }
+    .grade-C { color: #ffc107; font-weight: bold; }
+    .grade-D { color: #fd7e14; font-weight: bold; }
+    .grade-F { color: #dc3545; font-weight: bold; }
+
     /* Responsive */
     @media (max-width: 768px) {
       body {
@@ -255,10 +270,9 @@
     <div class="result-header">
       <h2>Exam Results</h2>
       <div class="semester-selector">
-        <label for="semester">Select Semester:</label>
+        <label for="semester">Select Exam:</label>
         <select id="semester">
-          <option value="1">First Semester</option>
-          <option value="2">Second Semester</option>
+          <option value="1">First Terminal Exam</option>
         </select>
       </div>
     </div>
@@ -278,6 +292,10 @@
           <div>Status</div>
           <strong id="status-value">-</strong>
         </div>
+        <div class="stat-item">
+          <div>Total Subjects</div>
+          <strong id="subjects-value">-</strong>
+        </div>
       </div>
     </div>
 
@@ -288,8 +306,8 @@
             <th>Subject Code</th>
             <th>Subject Name</th>
             <th>Credit Hours</th>
-            <th>Internal (40%)</th>
-            <th>External (60%)</th>
+            <th>Internal (25%)</th>
+            <th>External (75%)</th>
             <th>Total Marks</th>
             <th>Grade</th>
             <th>Grade Point</th>
@@ -309,22 +327,35 @@
   </div>
 
   <script>
+    // Function to calculate grade and grade point
+    function calculateGrade(totalMarks) {
+      if (totalMarks >= 90) return { grade: 'A+', gradePoint: 4.00 };
+      if (totalMarks >= 80) return { grade: 'A', gradePoint: 3.60 };
+      if (totalMarks >= 70) return { grade: 'B+', gradePoint: 3.20 };
+      if (totalMarks >= 60) return { grade: 'B', gradePoint: 2.80 };
+      if (totalMarks >= 50) return { grade: 'C+', gradePoint: 2.40 };
+      if (totalMarks >= 40) return { grade: 'C', gradePoint: 2.00 };
+      if (totalMarks >= 30) return { grade: 'D+', gradePoint: 1.80 };
+      return { grade: 'F', gradePoint: 0.00 };
+    }
+
+    // Function to calculate total marks (internal + external)
+    function calculateTotal(internal, external) {
+      return internal + external;
+    }
+
     const examResults = {
       1: {
         gpa: 3.45,
         totalCredits: 18,
         status: 'Passed',
         subjects: [
-          { code: 'CS101', name: 'Intro to CS', credits: 3, internal: 85, external: 78, total: 81, grade: 'A', gradePoint: 3.7 },
-          { code: 'MATH101', name: 'Mathematics', credits: 3, internal: 78, external: 75, total: 76, grade: 'B+', gradePoint: 3.3 },
-        ]
-      },
-      2: {
-        gpa: 3.60,
-        totalCredits: 20,
-        status: 'Passed',
-        subjects: [
-          { code: 'CS201', name: 'Data Structures', credits: 4, internal: 88, external: 85, total: 86, grade: 'A', gradePoint: 3.7 },
+          { code: '1011', name: 'English', credits: 3, internal: 22, external: 65 },
+          { code: '1012', name: 'Nepali', credits: 3, internal: 20, external: 62 },
+          { code: '1013', name: 'Mathematics', credits: 3, internal: 21, external: 68 },
+          { code: '1014', name: 'Physics', credits: 3, internal: 19, external: 58 },
+          { code: '1015', name: 'Chemistry', credits: 3, internal: 21, external: 65 },
+          { code: '1016', name: 'Computer Science', credits: 3, internal: 23, external: 70 }
         ]
       }
     };
@@ -335,36 +366,53 @@
       const gpaVal = document.getElementById('gpa-value');
       const creditsVal = document.getElementById('credits-value');
       const statusVal = document.getElementById('status-value');
+      const subjectsVal = document.getElementById('subjects-value');
 
       if (!data) {
         tbody.innerHTML = '<tr><td colspan="8">No data available</td></tr>';
-        gpaVal.textContent = creditsVal.textContent = statusVal.textContent = '-';
+        gpaVal.textContent = creditsVal.textContent = statusVal.textContent = subjectsVal.textContent = '-';
         return;
       }
 
-      gpaVal.textContent = data.gpa.toFixed(2);
-      creditsVal.textContent = data.totalCredits;
-      statusVal.textContent = data.status;
-
       tbody.innerHTML = '';
+      let totalGradePoints = 0;
+      let totalCredits = 0;
+      
       data.subjects.forEach(subject => {
+        const total = calculateTotal(subject.internal, subject.external);
+        const gradeInfo = calculateGrade(total);
+        const gradeClass = `grade-${gradeInfo.grade.charAt(0)}`;
+        
+        // Calculate weighted grade points
+        const weightedGradePoints = gradeInfo.gradePoint * subject.credits;
+        totalGradePoints += weightedGradePoints;
+        totalCredits += subject.credits;
+        
         const row = document.createElement('tr');
         row.innerHTML = `
           <td>${subject.code}</td>
           <td>${subject.name}</td>
           <td>${subject.credits}</td>
-          <td>${subject.internal}</td>
-          <td>${subject.external}</td>
-          <td>${subject.total}</td>
-          <td>${subject.grade}</td>
-          <td>${subject.gradePoint.toFixed(1)}</td>
+          <td>${subject.internal}/25</td>
+          <td>${subject.external}/75</td>
+          <td><strong>${total}/100</strong></td>
+          <td class="${gradeClass}">${gradeInfo.grade}</td>
+          <td>${gradeInfo.gradePoint.toFixed(2)}</td>
         `;
         tbody.appendChild(row);
       });
+
+      // Calculate GPA as weighted average
+      const gpa = totalCredits > 0 ? totalGradePoints / totalCredits : 0;
+      
+      gpaVal.textContent = gpa.toFixed(2);
+      creditsVal.textContent = totalCredits;
+      statusVal.textContent = gpa >= 2.0 ? 'Passed' : 'Failed';
+      subjectsVal.textContent = data.subjects.length;
     }
 
     document.getElementById('semester').addEventListener('change', function () {
-      updateResults(this.value);
+      updateResults(parseInt(this.value));
     });
 
     updateResults(1); // Default semester
