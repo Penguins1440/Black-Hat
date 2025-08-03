@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BS Calendar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+ .top-bar {
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, #8dc63f 40%, #2a348d 40%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+  }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      height: 100vh;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .logo img {
+      width: 140px;
+      height: auto;
+      display: inline-block;
+    }
+
+    .logo a {
+      text-decoration: none;
+    }
+
+    .logo a:hover {
+      opacity: 0.8;
+    }
+
+    .sidebar {
+      width: 240px;
+      background-color: #1a1d2b;
+      color: white;
+      padding: 30px 0;
+      height: 100vh;
+      position: fixed;
+    }
+
+    .sidebar a {
+      font-weight: bold;
+      display: block;
+      padding: 15px 30px;
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .main {
+      margin-left: 240px;
+      padding: 40px;
+      width: 100%;
+      overflow-y: auto;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 240px;
+      background-color: #1a1d2b;
+      color: white;
+      padding-top: 30px;
+      position: fixed;
+      height: 100vh;
+    }
+
+    .sidebar .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .sidebar .logo img {
+      width: 140px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 30px;
+      color: #ccc;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .main-content {
+      margin-left: 240px;
+      padding: 40px;
+      flex: 1;
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 800px;
+    }
+
+    .day {
+      text-align: center;
+      font-weight: bold;
+      padding: 10px;
+      background: #1abc9c;
+      color: white;
+      border-radius: 6px;
+    }
+
+    .date {
+      text-align: center;
+      padding: 15px;
+      background: #f0f0f0;
+      border-radius: 6px;
+    }
+
+    .holiday {
+      background-color: #e74c3c !important;
+      color: white;
+      font-weight: bold;
+    }
+
+    .logout-btn {
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      width: 100%;
+      text-align: left;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+
+    .logout-btn:hover {
+      background-color: #b71c1c;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="logo">
+    <a href="dashboard_mis.html"><img src="https://student.uniglobecollege.edu.np/Content/img/Uniglobelogo.png" alt="Logo"></a>
+  </div>
+  <a href="dashboard_mis.html">Profile</a>
+  <a href="test_calender.html">Attendance</a>
+  <a href="atendance_example.html">Assignments</a>
+  <a href="calender_mis.html" class="active">Calendar</a>
+  <a href="Result_mis.html">Exam Result</a>
+  <button class="logout-btn">Logout</button>
+</div>
+
+<main class="main-content">
+  <h2>Shrawan 2082 - Calendar</h2>
+  <div class="calendar">
+    <!-- Week Days -->
+    <div class="day">Sun</div>
+    <div class="day">Mon</div>
+    <div class="day">Tue</div>
+    <div class="day">Wed</div>
+    <div class="day">Thu</div>
+    <div class="day">Fri</div>
+    <div class="day">Sat</div>
+
+    <!-- Example Dates (Shrawan) -->
+    <div class="date"></div>
+    <div class="date"></div>
+    <div class="date">1</div>
+    <div class="date">2</div>
+    <div class="date holiday">3</div>
+    <div class="date">4</div>
+    <div class="date">5</div>
+
+    <div class="date">6</div>
+    <div class="date">7</div>
+    <div class="date">8</div>
+    <div class="date holiday">9</div>
+    <div class="date">10</div>
+    <div class="date">11</div>
+    <div class="date">12</div>
+
+    <!-- Add more days as needed -->
+  </div>
+</main>
+
+<script src="auth.js"></script>
+</body>
+</html>
