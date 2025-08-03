@@ -1,108 +1,507 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Reset Password</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uniglobe SS College - Management Information System</title>
+
+  <!-- Google Fonts and Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
   <style>
     .top-bar {
-    width: 100%;
-    height: 10px;
-    background: linear-gradient(90deg, #8dc63f 40%, #2a348d 40%);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 20;
-  }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #eee;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, #8dc63f 40%, #2a348d 40%);
+  position: fixed;
+  top: 90px; 
+  left: 0;
+  z-index: 20;
+}
+
+body {
+  padding-top: 70px; 
+}
+
+    * {
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    
-    body {
-    padding-top: 10px; 
-  }
- 
-    .reset-container {
-      background-color: white;
-      width: 350px;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .reset-container h2 {
-      margin-bottom: 10px;
-    }
-
-    .reset-container p {
-      font-size: 14px;
-      color: #444;
-      margin-bottom: 20px;
-    }
-
-    .reset-container input[type="email"],
-    .reset-container input[type="submit"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
       box-sizing: border-box;
     }
 
-    .reset-container input[type="submit"] {
-      background-color: #2b2b2b;
-      color: white;
-      cursor: pointer;
-      margin-top: 20px;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .reset-container input[type="submit"]:hover {
-      background-color: #444;
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
     }
 
-    .back-link {
-      margin-top: 20px;
-      display: block;
-      color: #007BFF;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-link {
       text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
     }
 
-    .back-link:hover {
-      text-decoration: underline;
+    .nav-link:hover {
+      color: #2563eb;
     }
-    
-  .bottom-bar {
-    width: 100%;
-    height: 10px;
-    background: linear-gradient(90deg, #8dc63f 40%, #2a348d 40%);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 20;
-  }
+
+    .login-btn {
+      background: #2563eb;
+      color: white !important;
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .login-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .bar {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 120px 0 80px;
+      background-image: url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4noDPNmqWg4t_WmpOI-fuD9dJKW9rbIvPng9Uf_2zb-_seQQ_ZlTbmtCuHvQUNZh3vrZkW2XuYYenWd_1dhwxFzgqdE0oDRVfeu_FpFvh6KgzMgxkXw78JLeKhW86xi94Azfwqqc=s1360-w1360-h1020-rw');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.75rem 2rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: #2563eb;
+      transform: translateY(-2px);
+    }
+
+    /* Features */
+    .features {
+      padding: 80px 0;
+      background: #f8fafc;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: #1e293b;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+
+    .feature-icon i {
+      font-size: 2rem;
+      color: white;
+    }
+
+    /* About */
+    .about {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #1e293b;
+      text-align: center;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* Contact */
+    .contact {
+      padding: 80px 0;
+      background: #f8fafc;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-item i {
+      width: 50px;
+      height: 50px;
+      background: #2563eb;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1e293b;
+      color: white;
+      padding: 60px 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo img {
+      width: 200px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
   </style>
 </head>
 <body>
-  
-      <div class="top-bar"></div>
-  <div class="reset-container">
-    <h2>Reset Password</h2>
-    <p>Enter your email to receive a password reset link.</p>
-    <form action="#" method="POST">
-      <input type="email" name="email" placeholder="Enter your email" required>
-      <input type="submit" value="Send Reset Link">
-    </form>
-    <a href="login.html" class="back-link">Back to Login</a>
-  </div>
-     <div class="bottom-bar"></div>
+   <nav class="menu-bar"></nav>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="https://student.uniglobecollege.edu.np/Content/img/Uniglobelogo.png" alt="Uniglobe SS College Logo" style="width: 150px">
+      </div>
+  <div class="top-bar"></div>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="login_mis.html" class="nav-link login-btn">Login</a></li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
 
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">Uniglobe SS College</h1>
+        <p class="hero-subtitle">Bringing The <br> Best Together</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-secondary">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title">Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-users"></i></div>
+          <h3>Student Management</h3>
+          <p>Comprehensive student records, enrollment tracking, and academic progress monitoring.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h3>Course Management</h3>
+          <p>Organize courses, schedules, and curriculum planning efficiently.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+          <h3>Event Management</h3>
+          <p>Schedule and manage academic events, meetings, and activities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About Our College</h2>
+          <p>Uniglobe Secondary School, located in Kathmandu, Nepal, offers +2 programs in Science, Management, and Law. Founded by experienced educators, the School aims to provide students with a relevant and up-to-date education that prepares them for success in the 21st century.<br>Uniglobe Secondary School believes in fostering a supportive and collaborative learning environment. Our dedicated faculty and staff work together to guide students not only academically but also in developing critical thinking and social responsibility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h3>Email</h3>
+              <p>info@uniglobecollege.edu.np</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h3>Phone</h3>
+              <p>01-5321875, 01-5320722, 01-5351409</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h3>Address</h3>
+              <p>Kamaladi, Ganeshthan Kathmandu, Nepal</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="Uniglobelogo.png" alt="Uniglobe SS College Logo" style="width: 200px" />
+          </div>
+          <p>Empowering educational institutions with innovative management solutions.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="#">Student Portal</a></li>
+            <li><a href="#">Faculty Portal</a></li>
+            <li><a href="#">Admin Portal</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="social-links">
+            <a href="https://www.facebook.com/UniglobeSecondarySchool"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/UniglobeSS"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/school/theuniglobe-ss-college/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/uniglobesecondaryschool/"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Uniglobe — All rights reserved</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+  </script>
 </body>
 </html>
