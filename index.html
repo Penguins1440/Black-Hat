@@ -12,7 +12,7 @@
   <style>
     .gradient-line {
       width: 100%;
-      height: 8px;
+      height: 12px;
       background: linear-gradient(90deg, #8BC53F 40%, #1B3584 60%);
       position: fixed;
       top: 70px;
@@ -31,7 +31,7 @@
     }
 
     body {
-      padding-top: 86px;
+      padding-top: 70px;
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       color: #333;
@@ -49,6 +49,7 @@
       position: fixed;
       top: 0;
       width: 100%;
+      height: 70px;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       z-index: 1000;
@@ -138,7 +139,7 @@
 
     /* Hero Section */
     .hero {
-      padding: 120px 0 80px;
+      padding: 120px 0 70px;
       background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4noDPNmqWg4t_WmpOI-fuD9dJKW9rbIvPng9Uf_2zb-_seQQ_ZlTbmtCuHvQUNZh3vrZkW2XuYYenWd_1dhwxFzgqdE0oDRVfeu_FpFvh6KgzMgxkXw78JLeKhW86xi94Azfwqqc=s1360-w1360-h1020-rw');
       background-size: cover;
       background-position: center;
@@ -649,7 +650,7 @@
   <!-- Features Section -->
   <section id="features" class="features">
     <div class="container">
-      <h2 class="section-title">Key Features</h2>
+      <h2 class="section-title">Know More</h2>
       <p class="section-subtitle">
         Discover our comprehensive management solutions designed to streamline educational processes 
         and enhance student experience.
@@ -670,7 +671,7 @@
         <div class="feature-card">
           <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
           <h3>Programs</h3>
-          <p>OExplore a diverse range of academic programs designed to equip students with knowledge and skills for their future careers.</p>
+          <p>Explore a diverse range of academic programs designed to equip students with knowledge and skills for their future careers.</p>
           <a href="program_management.html" class="feature-link">View Programs →</a>
         </div>
       </div>
@@ -755,9 +756,9 @@
         <div class="footer-section">
           <h3>Programs</h3>
           <ul>
-            <li><a href="#">Science</a></li>
-            <li><a href="#">Management</a></li>
-            <li><a href="#">Law</a></li>
+            <li><a href="science_courses.html">Science</a></li>
+            <li><a href="management_courses.html">Management</a></li>
+            <li><a href="law_courses.html">Law</a></li>
           </ul>
         </div>
         <div class="footer-section">
@@ -775,25 +776,5 @@
       </div>
     </div>
   </footer>
-
-  <!-- Optional JavaScript -->
-  <script>
-    const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".nav-menu");
-
-    hamburger.addEventListener("click", () => {
-      navMenu.classList.toggle("active");
-    });
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
 </body>
 </html>
