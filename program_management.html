@@ -9,20 +9,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   
-  <style>
-   .top-bar {
-      width: 100%;
-      height: 80px;
-      background: linear-gradient(90deg, #8dc63f 40%, #2a348d 40%);
-      position: fixed;
-      top: 90px; 
-      left: 0;
-      z-index: 20;
-    }
+     <style>
+                   .top-bar {
+         width: 100%;
+         height: 8px;
+         background: linear-gradient(90deg, #8dc63f 40%, #2a348d 60%);
+         position: relative;
+         margin-top: 0;
+         z-index: 20;
+       }
 
-    body {
-      padding-top: 70px; 
-    }
+      body {
+        padding-top: 0; 
+      }
     * {
       margin: 0;
       padding: 0;
@@ -183,8 +182,7 @@
 
     .program-actions {
       display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+      width: 100%;
     }
 
     .btn {
@@ -197,6 +195,8 @@
       transition: all 0.3s ease;
       text-decoration: none;
       display: inline-block;
+      width: 100%;
+      text-align: center;
     }
 
     .btn-primary {
@@ -270,7 +270,6 @@
   </style>
 </head>
 <body>
-  <nav class="menu-bar"></nav>
   <!-- Navigation -->
   <nav class="nav">
     <div class="container">
@@ -287,6 +286,9 @@
       </div>
     </div>
   </nav>
+  
+  <!-- Green and Blue Horizontal Line -->
+  <div class="top-bar"></div>
 
   <!-- Main Content -->
   <main class="main-content">
@@ -298,16 +300,13 @@
             <div class="stat-number">3</div>
             <div class="stat-label">Active Programs</div>
           </div>
+
           <div class="stat-card">
-            <div class="stat-number">45</div>
-            <div class="stat-label">Total Courses</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">25</div>
+            <div class="stat-number">84</div>
             <div class="stat-label">Faculty Members</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number">500+</div>
+            <div class="stat-number">2000+</div>
             <div class="stat-label">Enrolled Students</div>
           </div>
         </div>
@@ -328,21 +327,20 @@
             </p>
             <div class="program-stats">
               <div class="program-stat">
-                <div class="program-stat-number">15</div>
-                <div class="program-stat-label">Courses</div>
+                <div class="program-stat-number">7</div>
+                <div class="program-stat-label">Subjects</div>
               </div>
               <div class="program-stat">
-                <div class="program-stat-number">180</div>
+                <div class="program-stat-number">1400+</div>
                 <div class="program-stat-label">Students</div>
               </div>
               <div class="program-stat">
-                <div class="program-stat-number">8</div>
+                <div class="program-stat-number">51</div>
                 <div class="program-stat-label">Faculty</div>
               </div>
             </div>
             <div class="program-actions">
-              <a href="#" class="btn btn-primary">View Courses</a>
-              <a href="#" class="btn btn-secondary">Manage Program</a>
+              <a href="Science_course.html" class="btn btn-primary">View Courses</a>
             </div>
           </div>
 
@@ -357,21 +355,20 @@
             </p>
             <div class="program-stats">
               <div class="program-stat">
-                <div class="program-stat-number">12</div>
-                <div class="program-stat-label">Courses</div>
+                <div class="program-stat-number">10</div>
+                <div class="program-stat-label">Subjects</div>
               </div>
               <div class="program-stat">
-                <div class="program-stat-number">220</div>
+                <div class="program-stat-number">1000+</div>
                 <div class="program-stat-label">Students</div>
               </div>
               <div class="program-stat">
-                <div class="program-stat-number">10</div>
+                <div class="program-stat-number">21</div>
                 <div class="program-stat-label">Faculty</div>
               </div>
             </div>
             <div class="program-actions">
               <a href="#" class="btn btn-primary">View Courses</a>
-              <a href="#" class="btn btn-secondary">Manage Program</a>
             </div>
           </div>
 
@@ -386,21 +383,20 @@
             </p>
             <div class="program-stats">
               <div class="program-stat">
-                <div class="program-stat-number">18</div>
-                <div class="program-stat-label">Courses</div>
+                <div class="program-stat-number">6</div>
+                <div class="program-stat-label">Subjects</div>
               </div>
               <div class="program-stat">
-                <div class="program-stat-number">100</div>
+                <div class="program-stat-number">200+</div>
                 <div class="program-stat-label">Students</div>
               </div>
               <div class="program-stat">
-                <div class="program-stat-number">7</div>
+                <div class="program-stat-number">12</div>
                 <div class="program-stat-label">Faculty</div>
               </div>
             </div>
             <div class="program-actions">
               <a href="#" class="btn btn-primary">View Courses</a>
-              <a href="#" class="btn btn-secondary">Manage Program</a>
             </div>
           </div>
         </div>
