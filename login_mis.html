@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login with Fixed Logo</title>
+  <title>Login</title>
   <style>
     .top-bar {
     width: 100%;
     height: 10px;
-    background: linear-gradient(90deg, #8dc63f 40%, #2a348d 40%);
+    background: linear-gradient(90deg, #8dc63f 40%, #2a348d 60%);
     position: fixed;
     top: 0;
     left: 0;
     z-index: 20;
-  }
-    body {
-    padding-top: 10px; 
   }
     .top-left-logo {
   position: absolute;
@@ -28,27 +25,31 @@
   height: auto;
   display: block;
 }
+
     html, body {
       height: 100%;
       margin: 0;
       font-family: sans-serif;
       background: #f2f2f2;
     }
+
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
     .login-box {
       width: 340px;
       background: #fff;
       border-radius: 8px;
-      outline: 3px solid #222;
-      outline-offset: 6px;
       text-align: center;
       padding: 30px 20px;
       box-sizing: border-box;
     }
+
     .login-box .logo-link img {
       max-width: 70%;
       height: auto;
@@ -61,14 +62,17 @@
       font-size: 24px;
       font-weight: bold;
     }
+
     form {
       text-align: left;
     }
+
     label {
       display: block;
       margin-bottom: 6px;
       font-weight: bold;
     }
+
     input[type="email"],
     input[type="password"] {
       width: 100%;
@@ -78,6 +82,7 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
+
     .login-box button {
       width: 100%;
       padding: 10px;
@@ -90,6 +95,7 @@
     }
     .login-box button:hover {
       background: #000;
+
     }
     .signup-message {
   margin-top: 20px;
@@ -109,14 +115,11 @@
   .bottom-bar {
     width: 100%;
     height: 10px;
-    background: linear-gradient(90deg, #8dc63f 40%, #2a348d 40%);
+    background: linear-gradient(90deg, #8dc63f 40%, #2a348d 60%);
     position: fixed;
     bottom: 0;
     left: 0;
     z-index: 20;
-  }
-  body {
-    padding-bottom: 10px; 
   }
 
   .error-message {
